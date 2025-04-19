@@ -1,0 +1,84 @@
+/* ===== Source Styles ===== */
+[data-source="landing"] {
+  --btn-font: "Comic Sans MS";
+  --btn-bg: lightgreen;
+  --btn-shadow: 3px 1px 5px 6px green;
+  --btn-border-radius: 30px;
+}
+
+[data-source="app"] {
+  --btn-font: "Montserrat", sans-serif;
+  --btn-bg: lightblue;
+  --btn-border-radius: 0px;
+}
+
+[data-source="app"] {
+  --control-gap: 10px;
+}
+
+[data-source="landing"] {
+  --control-gap: 40px;
+}
+
+/* ===== Device Styles ===== */
+[data-device="mobile"][data-source="app"] {
+  --btn-font-size: 12px;
+}
+
+[data-device="desktop"][data-source="app"] {
+  --btn-font-size: 15px;
+}
+
+[data-device="mobile"][data-source="landing"] {
+  --btn-font-size: 15px;
+}
+
+[data-device="desktop"][data-source="landing"] {
+  --btn-font-size: 20px;
+}
+
+
+[data-source="landing"][data-device="desktop"] {
+  --control-padding-horizontal: 60px;
+  --control-padding-vertical: 10px;
+}
+
+[data-source="landing"][data-device="mobile"] {
+  --control-padding-horizontal: 60px;
+  --control-padding-vertical: 5px;
+}
+
+[data-source="app"][data-device="desktop"] {
+  --control-padding-horizontal: 20px;
+  --control-padding-vertical: 5px;
+}
+
+[data-source="app"][data-device="mobile"] {
+  --control-padding-horizontal: 10px;
+  --control-padding-vertical: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+  margin: 20px;
+}
+/* ===== Button Styles ===== */
+.custom-button {
+  display: block;
+  font-family: var(--btn-font);
+  font-size: var(--btn-font-size);
+  padding: var(--control-padding-vertical) var(--control-padding-horizontal);
+  background-color: var(--btn-bg);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow:var(--btn-shadow)
+}
+
+.custom-button:hover {
+  opacity: 0.8;
+}
