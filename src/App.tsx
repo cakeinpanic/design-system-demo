@@ -11,42 +11,51 @@ export default function ButtonStyleApp() {
   const cssVariables = {
     landing: {
       common: {
-        'btn-font': '"Comic Sans MS"',
+        'font': '"Comic Sans MS"',
+
         'btn-bg': 'lightgreen',
         'btn-shadow': '3px 1px 5px 6px green',
         'btn-border-radius': '30px',
 
       },
       desktop: {
-        'btn-font-size': '20px',
-        'control-padding-horizontal': '60px',
-        'control-padding-vertical': '10px',
+        'h1-font': '30px',
+        'h2-font': '25px',
+        'control-font': '20px',
+        'btn-padding-horizontal': '60px',
+        'btn-padding-vertical': '10px',
         'control-gap': '40px',
       },
       mobile: {
-        'btn-font-size': '15px',
-        'control-padding-horizontal': '60px',
-        'control-padding-vertical': '5px',
+        'h1-font': '19px',
+        'h2-font': '15px',
+        'control-font': '12px',
+        'btn-padding-horizontal': '60px',
+        'btn-padding-vertical': '5px',
         'control-gap': '30px',
       },
     },
     app: {
       common: {
-        'btn-font': '"Montserrat", sans-serif',
+        'font': '"Montserrat", sans-serif',
         'btn-bg': 'lightblue',
         'btn-shadow': 'none',
         'btn-border-radius': '0px',
       },
       desktop: {
-        'btn-font-size': '15px',
-        'control-padding-horizontal': '20px',
-        'control-padding-vertical': '5px',
+        'h1-font': '30px',
+        'h2-font': '20px',
+        'control-font': '15px',
+        'btn-padding-horizontal': '20px',
+        'btn-padding-vertical': '5px',
         'control-gap': '10px',
       },
       mobile: {
-        'btn-font-size': '12px',
-        'control-padding-horizontal': '10px',
-        'control-padding-vertical': '5px',
+        'h1-font': '22px',
+        'h2-font': '15px',
+        'control-font': '12px',
+        'btn-padding-horizontal': '10px',
+        'btn-padding-vertical': '5px',
         'control-gap': '10px',
       },
     },
@@ -69,7 +78,7 @@ export default function ButtonStyleApp() {
         `}
       </style>
       <div
-        className="m-5 flex flex-row gap-3 justify-center w-full items-center text-gray-800 font-sans"
+        className="demo-container m-5 flex flex-row gap-3 justify-center w-full items-center text-gray-800"
         data-device={device}
         data-source={source}
       >
@@ -114,6 +123,8 @@ export default function ButtonStyleApp() {
             </div>
           </div>
           <div className="container">
+            <h1>H1 title</h1>
+            <h2>H2 title</h2>
             <button className="custom-button w-full mt-4">One button</button>
 
             <button className="custom-button w-full mt-4">Annother button</button>
