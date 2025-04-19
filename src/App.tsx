@@ -8,23 +8,66 @@ export default function ButtonStyleApp() {
   const device = isMobile ? 'mobile' : 'desktop'
   const source = isLanding ? 'landing' : 'app'
 
+  const cssVariables = {
+    landing: {
+      common: {
+        '--btn-font': '"Comic Sans MS"',
+        '--btn-bg': 'lightgreen',
+        '--btn-shadow': '3px 1px 5px 6px green',
+        '--btn-border-radius': '30px',
+        '--control-gap': '40px',
+      },
+      desktop: {
+        '--btn-font-size': '20px',
+        '--control-padding-horizontal': '60px',
+        '--control-padding-vertical': '10px',
+      },
+      mobile: {
+        '--btn-font-size': '15px',
+        '--control-padding-horizontal': '60px',
+        '--control-padding-vertical': '5px',
+      },
+    },
+    app: {
+      common: {
+        '--btn-font': '"Montserrat", sans-serif',
+        '--btn-bg': 'lightblue',
+        '--btn-border-radius': '0px',
+        '--control-gap': '10px',
+      },
+      desktop: {
+        '--btn-font-size': '15px',
+        '--control-padding-horizontal': '20px',
+        '--control-padding-vertical': '5px',
+      },
+      mobile: {
+        '--btn-font-size': '12px',
+        '--control-padding-horizontal': '10px',
+        '--control-padding-vertical': '5px',
+      },
+    },
+  }
+
+  const currentVariables = {
+    ...cssVariables[source].common,
+    ...cssVariables[source][device],
+  }
+
   return (
     <>
       <style>
         {`
-      
-      `}</style>
-      <div className="m-5
-      flex flex-row
-      gap-3
-       justify-center
-       w-full
-
-      items-center
-      text-gray-800 font-sans"
-
-           data-device={device}
-           data-source={source}
+          :root {
+            ${Object.entries(currentVariables)
+              .map(([key, value]) => `${key}: ${value};`)
+              .join('\n')}
+          }
+        `}
+      </style>
+      <div
+        className="m-5 flex flex-row gap-3 justify-center w-full items-center text-gray-800 font-sans"
+        data-device={device}
+        data-source={source}
       >
         <div className="bg-white border-1 p-8 space-y-6 w-1/3">
           <h1 className="text-2xl font-bold text-indigo-700 text-center">
@@ -135,3 +178,4 @@ export default function ButtonStyleApp() {
     </>
   )
 }
+
