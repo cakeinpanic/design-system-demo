@@ -1,7 +1,4 @@
 
-body {
-
-}
 
 .container {
   display: flex;
@@ -11,27 +8,26 @@ body {
   margin: 20px;
 
   h1 {
-    font-size: var(--h1-font);
+    font-size: var(--h1-font-size);
   }
   h2 {
-    font-size: var(--h2-font);
+    font-size: var(--h2-font-size);
   }
 }
 
 
 /* ===== Button Styles ===== */
 .custom-button {
-  display: block;
-
-  font-size: var(--control-font);
+  font-size: var(--control-font-size);
   padding: var(--btn-padding-vertical) var(--btn-padding-horizontal);
   background-color: var(--btn-bg);
-  border: none;
   border-radius: var(--btn-border-radius);
+  box-shadow: var(--btn-shadow);
   color: #fff;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  box-shadow: var(--btn-shadow)
+  border: none;
+  display: block;
 }
 
 .custom-button:hover {

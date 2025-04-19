@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 
 export default function ButtonStyleApp() {
@@ -10,60 +10,91 @@ export default function ButtonStyleApp() {
 
   const cssVariables = {
     landing: {
-      common: {
-        'font': '"Comic Sans MS"',
+      typography: {
+        common: {
+          'font': '"Comic Sans MS"',
 
-        'btn-bg': 'lightgreen',
-        'btn-shadow': '3px 1px 5px 6px green',
-        'btn-border-radius': '30px',
+        },
+        desktop: {
+          'h1-font-size': '30px',
+          'h2-font-size': '25px',
+          'control-font-size-size': '20px',
+
+        },
+        mobile: {
+          'h1-font-size': '19px',
+          'h2-font-size': '15px',
+          'control-font-size-size': '12px',
+
+        },
 
       },
-      desktop: {
-        'h1-font': '30px',
-        'h2-font': '25px',
-        'control-font': '20px',
-        'btn-padding-horizontal': '60px',
-        'btn-padding-vertical': '10px',
-        'control-gap': '40px',
-      },
-      mobile: {
-        'h1-font': '19px',
-        'h2-font': '15px',
-        'control-font': '12px',
-        'btn-padding-horizontal': '60px',
-        'btn-padding-vertical': '5px',
-        'control-gap': '30px',
-      },
+      button: {
+        common: {
+          'btn-bg': 'lightgreen',
+          'btn-shadow': '3px 1px 5px 6px green',
+          'btn-border-radius': '30px'
+        },
+        desktop: {
+
+          'btn-padding-horizontal': '60px',
+          'btn-padding-vertical': '10px',
+          'control-gap': '40px',
+        },
+        mobile: {
+
+          'btn-padding-horizontal': '60px',
+          'btn-padding-vertical': '5px',
+          'control-gap': '30px',
+        },
+      }
     },
     app: {
-      common: {
-        'font': '"Montserrat", sans-serif',
-        'btn-bg': 'lightblue',
-        'btn-shadow': 'none',
-        'btn-border-radius': '0px',
+      typography: {
+        common: {
+          'font': '"Montserrat", sans-serif',
+        },
+        desktop: {
+          'h1-font-size': '30px',
+          'h2-font-size': '20px',
+          'control-font-size': '15px',
+
+        },
+        mobile: {
+          'h1-font-size': '22px',
+          'h2-font-size': '15px',
+          'control-font-size': '12px',
+
+        },
       },
-      desktop: {
-        'h1-font': '30px',
-        'h2-font': '20px',
-        'control-font': '15px',
-        'btn-padding-horizontal': '20px',
-        'btn-padding-vertical': '5px',
-        'control-gap': '10px',
+      button: {
+        common: {
+          'btn-bg': 'lightblue',
+          'btn-shadow': 'none',
+          'btn-border-radius': '0px',
+        },
+        desktop: {
+
+          'btn-padding-horizontal': '20px',
+          'btn-padding-vertical': '5px',
+          'control-gap': '10px',
+        },
+        mobile: {
+
+          'btn-padding-horizontal': '10px',
+          'btn-padding-vertical': '5px',
+          'control-gap': '10px',
+        },
       },
-      mobile: {
-        'h1-font': '22px',
-        'h2-font': '15px',
-        'control-font': '12px',
-        'btn-padding-horizontal': '10px',
-        'btn-padding-vertical': '5px',
-        'control-gap': '10px',
-      },
+
     },
   }
 
   const currentVariables = {
-    ...cssVariables[source].common,
-    ...cssVariables[source][device],
+    ...cssVariables[source].button.common,
+    ...cssVariables[source].button[device],
+    ...cssVariables[source].typography.common,
+    ...cssVariables[source].typography[device],
   }
 
   return (
@@ -72,19 +103,19 @@ export default function ButtonStyleApp() {
         {`
           :root {
             ${Object.entries(currentVariables)
-              .map(([key, value]) => `--${key}: ${value};`)
-              .join('\n')}
+          .map(([key, value]) => `--${key}: ${value};`)
+          .join('\n')}
           }
         `}
       </style>
       <div
-        className="demo-container m-5 flex flex-row gap-3 justify-center w-full items-center text-gray-800"
+        className="demo-container p-5 flex flex-row gap-3 justify-center w-full items-center text-gray-800 items-start"
         data-device={device}
         data-source={source}
       >
-        <div className="bg-white border-1 p-8 space-y-6 w-1/3">
+        <div className="bg-white border-1 p-8 space-y-6 w-1/2">
           <h1 className="text-2xl font-bold text-indigo-700 text-center">
-            Style Switcher
+            Demo
           </h1>
 
           <div className="flex justify-between gap-4 items-center">
@@ -127,79 +158,37 @@ export default function ButtonStyleApp() {
             <h2>H2 title</h2>
             <button className="custom-button w-full mt-4">One button</button>
 
-            <button className="custom-button w-full mt-4">Annother button</button>
+            <button className="custom-button w-full mt-4">Another button</button>
           </div>
         </div>
 
-        <div className="bg-white border-1 p-8 space-y-6 w-1/3">
-          <h1 className="text-2xl font-bold text-indigo-700 text-center">
-            Landing style
-          </h1>
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold">Common styles</h3>
-            {Object.entries(cssVariables.landing.common).map(([key, value]) => (
-              <div className="flex flex-row justify-between" key={key}>
-                <div>{key}</div>
-                <div>{value}</div>
+        {Object.entries(cssVariables).map(([sourceKey, sourceValue]) => (
+          <div className="bg-white border-1 p-8 space-y-6 w-1/3" key={sourceKey}>
+            <h1 className="text-2xl font-bold  text-center">
+              {sourceKey.charAt(0).toUpperCase() + sourceKey.slice(1)} style
+            </h1>
+            {Object.entries(sourceValue).map(([categoryKey, categoryValue]) => (
+              <div className="flex flex-col" key={categoryKey}>
+                <h3 className="text-lg font-bold">
+                  {categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1)}
+                </h3>
+                {Object.entries(categoryValue).map(([typeKey, typeValue]) => (
+                  <div className="flex flex-col" key={typeKey}>
+                    <h4 className="text-md font-semibold">
+                      {typeKey.charAt(0).toUpperCase() + typeKey.slice(1)}
+                    </h4>
+                    {Object.entries(typeValue).map(([key, value]) => (
+                      <div className="flex flex-row justify-between" key={key}>
+                        <div>{key}</div>
+                        <div>{value}</div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
             ))}
           </div>
-
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold">Desktop styles</h3>
-            {Object.entries(cssVariables.landing.desktop).map(([key, value]) => (
-              <div className="flex flex-row justify-between" key={key}>
-                <div>{key}</div>
-                <div>{value}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold">Mobile styles</h3>
-            {Object.entries(cssVariables.landing.mobile).map(([key, value]) => (
-              <div className="flex flex-row justify-between" key={key}>
-                <div>{key}</div>
-                <div>{value}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="bg-white border-1 p-8 space-y-6 w-1/3">
-          <h1 className="text-2xl font-bold text-indigo-700 text-center">
-            App style
-          </h1>
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold">Common styles</h3>
-            {Object.entries(cssVariables.app.common).map(([key, value]) => (
-              <div className="flex flex-row justify-between" key={key}>
-                <div>{key}</div>
-                <div>{value}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold">Desktop styles</h3>
-            {Object.entries(cssVariables.app.desktop).map(([key, value]) => (
-              <div className="flex flex-row justify-between" key={key}>
-                <div>{key}</div>
-                <div>{value}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold">Mobile styles</h3>
-            {Object.entries(cssVariables.app.mobile).map(([key, value]) => (
-              <div className="flex flex-row justify-between" key={key}>
-                <div>{key}</div>
-                <div>{value}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </>
   )
