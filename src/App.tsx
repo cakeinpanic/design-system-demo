@@ -26,7 +26,7 @@ export default function ButtonStyleApp() {
            data-device={device}
            data-source={source}
       >
-        <div className="bg-white border-1 p-8 space-y-6 w-full max-w-md">
+        <div className="bg-white border-1 p-8 space-y-6 w-1/3">
           <h1 className="text-2xl font-bold text-indigo-700 text-center">
             Style Switcher
           </h1>
@@ -73,14 +73,61 @@ export default function ButtonStyleApp() {
           </div>
         </div>
 
-        <div className="bg-white border-1 p-8 space-y-6 w-full max-w-md">
+        <div className="bg-white border-1 p-8 space-y-6 w-1/3">
           <h1 className="text-2xl font-bold text-indigo-700 text-center">
-           Landing style
+            Landing style
           </h1>
           <div className="flex flex-col">
+            <h3>Common styles</h3>
             <div className="flex flex-row justify-between">
               <div className="">Font</div>
               <div className="">Comic Sans MS</div>
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <h3>Desktop styles</h3>
+            <div className="flex flex-row justify-between">
+              <div className="">Font size</div>
+              <div className="">20px</div>
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <h3>Mobile styles</h3>
+            <div className="flex flex-row justify-between">
+              <div className="">Font size</div>
+              <div className="">15px</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white border-1 p-8 space-y-6  w-1/3">
+          <h1 className="text-2xl font-bold text-indigo-700 text-center">
+            App style
+          </h1>
+          <div className="flex flex-col">
+            <h3>Common styles</h3>
+            <div className="flex flex-row justify-between">
+              <div className="">Font</div>
+              <div className="">Comic Sans MS</div>
+            </div>
+          </div>
+
+
+          <div className="flex flex-col">
+            <h3>Desktop styles</h3>
+            <div className="flex flex-row justify-between">
+              <div className="">Font size</div>
+              <div className="">12px</div>
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <h3>Mobile styles</h3>
+            <div className="flex flex-row justify-between">
+              <div className="">Font size</div>
+              <div className="">15px</div>
             </div>
           </div>
         </div>

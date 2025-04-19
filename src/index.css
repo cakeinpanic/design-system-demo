@@ -11,13 +11,18 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width :100%;
 }
 
-
+#root {
+  width: 90%;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   display: flex;
   place-items: center;
+  width: 100%;
 
 }
 
